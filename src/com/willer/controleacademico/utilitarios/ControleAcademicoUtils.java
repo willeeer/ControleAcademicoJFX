@@ -6,13 +6,24 @@ import java.io.*;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ControleAcademicoUtils
 {
 
+   private static final String PADRAO_EMAIL =
+            "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                     + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+   private static final String PADRAO_TURMA = "^[M|N|T]*S*[0-9]*-*[0-9]";
+   private static final Pattern patternTurma = Pattern.compile(PADRAO_TURMA);
+
+   private static final Pattern pattern = Pattern.compile(PADRAO_EMAIL, Pattern.CASE_INSENSITIVE);
+
    public static boolean isTelefoneValido(String telefone)
    {
-      if (telefone.length() != 10)
+      if (telefone.length() != 11)
       {
          return false;
       }
@@ -35,7 +46,7 @@ public class ControleAcademicoUtils
       for (int i = 0; i < nome.length(); i++)
       {
 
-         if (!Character.isLetter(nome.charAt(i)))
+         if (!Character.isLetter(nome.charAt(i)) && !Character.isSpaceChar(nome.charAt(i)))
          {
             return false;
          }
@@ -119,7 +130,50 @@ public class ControleAcademicoUtils
 
    }
 
-   private static String removeCaracteresEspeciais(String doc)
+   public static boolean isDataValida(String data)
+   {
+      if (data.length() != 10)
+      {
+         return false;
+      }
+
+      if (!(data.charAt(2) == '/' && data.charAt(5) == '/'))
+      {
+         return false;
+      }
+
+      String dataLimpa = removeCaracteresEspeciais(data);
+
+      int dia = Integer.parseInt(dataLimpa.substring(0, 2));
+      int mes = Integer.parseInt(dataLimpa.substring(2, 4));
+      int ano = Integer.parseInt(dataLimpa.substring(4, 8));
+
+      if (dia < 1 || dia > 31)
+      {
+         return false;
+      }
+
+      if (mes < 1 || mes > 12)
+      {
+         return false;
+      }
+
+      if (ano < 1900 || ano > 2005)
+      {
+         return false;
+      }
+
+      return true;
+
+   }
+
+   public static boolean isEmailValido(String email)
+   {
+      Matcher matcher = pattern.matcher(email);
+      return matcher.matches();
+   }
+
+   public static String removeCaracteresEspeciais(String doc)
    {
       if (doc.contains("."))
       {
@@ -134,6 +188,12 @@ public class ControleAcademicoUtils
          doc = doc.replace("/", "");
       }
       return doc;
+   }
+
+   public static boolean isTurmaValida(String codigoTurma)
+   {
+      Matcher matcher = patternTurma.matcher(codigoTurma);
+      return matcher.matches();
    }
 
    public static LinkedList carregarArquivo(File arquivo)

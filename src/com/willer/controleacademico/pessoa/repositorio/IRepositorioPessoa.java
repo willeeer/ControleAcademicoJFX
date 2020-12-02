@@ -13,7 +13,7 @@ public interface IRepositorioPessoa
 
    void excluir(String cpf);
 
-   void alterar(String cpf);
+   void alterar(Pessoa p);
 
    ArrayList<Pessoa> recuperaListaAlunos();
 

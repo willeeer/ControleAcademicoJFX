@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="456.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.willer.controleacademico.javafx.controllers.turma.ListarTurmasDisciplinaController">
+    <children>
+        <ScrollPane prefHeight="400.0" prefWidth="700.0">
+            <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0">
+                    <children>
+                        <TableView fx:id="tableData" prefHeight="400.0" prefWidth="684.0">
+                            <columns>
+                                <TableColumn fx:id="nomeDisciplina" prefWidth="235.0" text="Nome Disciplina" />
+                                <TableColumn fx:id="codigoDisciplina" minWidth="0.0" prefWidth="114.0" text="Código Disciplina" />
+                                <TableColumn fx:id="codigoTurma" minWidth="0.0" prefWidth="133.0" text="Código da Turma" />
+                                <TableColumn fx:id="horario" minWidth="0.0" prefWidth="71.0" text="Horário" />
+                        <TableColumn fx:id="nomeProfessor" minWidth="0.0" prefWidth="130.0" text="Nome Professor" />
+                            </columns>
+                        </TableView>
+                    </children>
+                </AnchorPane>
+            </content>
+        </ScrollPane>
+        <ButtonBar layoutX="159.0" layoutY="400.0" prefHeight="40.0" prefWidth="200.0" />
+        <Button fx:id="voltarButton" contentDisplay="CENTER" layoutX="324.0" layoutY="415.0" mnemonicParsing="false" onAction="#acaoBotaoVoltar" prefHeight="25.0" prefWidth="126.0" text="Voltar" />
+    </children>
+</AnchorPane>

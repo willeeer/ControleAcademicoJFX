@@ -10,7 +10,7 @@ import java.util.LinkedList;
 public class RepositorioPessoa implements IRepositorioPessoa
 {
 
-   private static LinkedList<Pessoa> listaPessoas;
+   private LinkedList<Pessoa> listaPessoas;
 
    private static File arquivo = new File("ListaPessoas.obj");
 
@@ -43,6 +43,7 @@ public class RepositorioPessoa implements IRepositorioPessoa
       else
       {
          listaPessoas.add(p);
+         this.salvarArquivo();
          return true;
       }
 
@@ -70,6 +71,7 @@ public class RepositorioPessoa implements IRepositorioPessoa
          if (p.getCpf().compareTo(cpf) == 0)
          {
             listaPessoas.remove(p);
+            this.salvarArquivo();
             break;
          }
       }
@@ -77,13 +79,17 @@ public class RepositorioPessoa implements IRepositorioPessoa
    }
 
    @Override
-   public void alterar(String cpf)
+   public void alterar(Pessoa p)
    {
-      Pessoa p = buscarPorCpf(cpf);
 
-      if (p != null)
+      for (int i = 0; i < listaPessoas.size(); i++)
       {
-         //fazer alteração
+         if (p.getCpf().compareTo(listaPessoas.get(i).getCpf()) == 0)
+         {
+            listaPessoas.set(i, p);
+            this.salvarArquivo();
+            break;
+         }
       }
 
    }
@@ -115,7 +121,6 @@ public class RepositorioPessoa implements IRepositorioPessoa
          if (p.isProfessor())
          {
             listaAlunos.add(p);
-
          }
       }
 
@@ -125,10 +130,20 @@ public class RepositorioPessoa implements IRepositorioPessoa
    public void carregarArquivo()
    {
 
-      listaPessoas = (LinkedList<Pessoa>) ControleAcademicoUtils.carregarArquivo(arquivo);
+      if (listaPessoas == null)
+      {
+         this.listaPessoas = new LinkedList<>();
+      }
+
+      LinkedList<Pessoa> listaCarregada = (LinkedList<Pessoa>) ControleAcademicoUtils.carregarArquivo(arquivo);
+
+      if (listaCarregada != null)
+      {
+         listaPessoas.addAll(listaCarregada);
+      }
    }
 
-   public static void salvarArquivo()
+   public void salvarArquivo()
    {
       ControleAcademicoUtils.salvarArquivo(arquivo, listaPessoas);
    }

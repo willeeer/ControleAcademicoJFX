@@ -1,8 +1,9 @@
 package com.willer.controleacademico.turma.dto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Turma
+public class Turma implements Serializable
 {
 
    private String codigo;
@@ -13,45 +14,6 @@ public class Turma
    private Integer periodo;
    private Integer quantidadeAunosMatriculados;
    private ArrayList<String> cpfAlunosMatriculados;
-
-   public boolean excluirAluno(String cpfAluno)
-   {
-      String cpfAlunoJaExistente = buscarAlunoNaTurma(cpfAluno);
-      if (cpfAlunoJaExistente != null)
-      {
-         cpfAlunosMatriculados.remove(cpfAlunoJaExistente);
-         return true;
-      }
-      return false;
-   }
-
-   public boolean adicionarAluno(String cpfAluno)
-   {
-      String cpfAlunoJaExistente = buscarAlunoNaTurma(cpfAluno);
-      if (quantidadeAunosMatriculados.equals(quantidadeMaxAlunos) || cpfAlunoJaExistente != null)
-      {
-         return false;
-
-      }
-      else
-      {
-         cpfAlunosMatriculados.add(cpfAluno);
-         return true;
-      }
-   }
-
-   public boolean alocarProfessor(String cpfProfessor)
-   {
-      if (this.cpfProfessor != null)
-      {
-         return false;
-      }
-      else
-      {
-         this.cpfProfessor = cpfProfessor;
-         return true;
-      }
-   }
 
    public String getCodigo()
    {
@@ -85,7 +47,12 @@ public class Turma
 
    public Integer getQuantidadeAunosMatriculados()
    {
-      return quantidadeAunosMatriculados;
+      if (cpfAlunosMatriculados != null)
+      {
+         return cpfAlunosMatriculados.size();
+      }
+
+      return 0;
    }
 
    public ArrayList<String> getCpfAlunosMatriculados()
@@ -93,15 +60,56 @@ public class Turma
       return cpfAlunosMatriculados;
    }
 
-   private String buscarAlunoNaTurma(String cpf)
+   public void setCodigo(String codigo)
    {
-      for (String cpfAluno : this.cpfAlunosMatriculados)
+      this.codigo = codigo;
+   }
+
+   public void setCodigoDisciplina(String codigoDisciplina)
+   {
+      this.codigoDisciplina = codigoDisciplina;
+   }
+
+   public void setHorario(String horario)
+   {
+      this.horario = horario;
+   }
+
+   public void setCpfProfessor(String cpfProfessor)
+   {
+      this.cpfProfessor = cpfProfessor;
+   }
+
+   public void setQuantidadeMaxAlunos(Integer quantidadeMaxAlunos)
+   {
+      this.quantidadeMaxAlunos = quantidadeMaxAlunos;
+   }
+
+   public void setPeriodo(Integer periodo)
+   {
+      this.periodo = periodo;
+   }
+
+   public void setCpfAlunosMatriculados(ArrayList<String> cpfAlunosMatriculados)
+   {
+      this.cpfAlunosMatriculados = cpfAlunosMatriculados;
+   }
+
+   public void setQuantidadeAunosMatriculados(Integer quantidadeAunosMatriculados)
+   {
+      this.quantidadeAunosMatriculados = quantidadeAunosMatriculados;
+   }
+
+   public boolean alunoPertenceTurma(String cpfAluno)
+   {
+
+      for (String cpf : cpfAlunosMatriculados)
       {
          if (cpfAluno.compareTo(cpf) == 0)
          {
-            return cpfAluno;
+            return true;
          }
       }
-      return null;
+      return false;
    }
 }

@@ -15,8 +15,6 @@ public interface IRepositorioDisciplinas
 
    void alterar(Disciplina p);
 
-   ArrayList<Disciplina> recuperaListaAlunos();
-
-   ArrayList<Disciplina> recuperaListaProfessores();
+   ArrayList<Disciplina> recuperaDisciplinas();
 
 }

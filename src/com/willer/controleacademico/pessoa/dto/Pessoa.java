@@ -8,12 +8,30 @@ public class Pessoa implements Serializable
 
    private String cpf;
    private String nome;
-   private Date dataNascimento;
+   private String dataNascimento;
    private String sexo;
    private String telefone;
    private String email;
    private String endereco;
    private Boolean isProfessor;
+
+   public Pessoa(String cpf, String nome, String dataNascimento, String sexo, String telefone, String email, String endereco,
+            Boolean isProfessor)
+   {
+      this.cpf = cpf;
+      this.nome = nome;
+      this.dataNascimento = dataNascimento;
+      this.sexo = sexo;
+      this.telefone = telefone;
+      this.email = email;
+      this.endereco = endereco;
+      this.isProfessor = isProfessor;
+   }
+
+   public Pessoa()
+   {
+
+   }
 
    public String getCpf()
    {
@@ -35,12 +53,12 @@ public class Pessoa implements Serializable
       this.nome = nome;
    }
 
-   public Date getDataNascimento()
+   public String getDataNascimento()
    {
       return dataNascimento;
    }
 
-   public void setDataNascimento(Date dataNascimento)
+   public void setDataNascimento(String dataNascimento)
    {
       this.dataNascimento = dataNascimento;
    }

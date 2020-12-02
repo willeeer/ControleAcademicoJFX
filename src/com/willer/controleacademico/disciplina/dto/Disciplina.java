@@ -1,6 +1,8 @@
 package com.willer.controleacademico.disciplina.dto;
 
-public class Disciplina
+import java.io.Serializable;
+
+public class Disciplina implements Serializable
 {
 
    private String codigo;
@@ -16,6 +18,11 @@ public class Disciplina
       this.cargaHoraria = cargaHoraria;
       this.creditos = creditos;
       this.periodo = periodo;
+   }
+
+   public Disciplina()
+   {
+
    }
 
    public String getCodigo()

@@ -2,7 +2,8 @@ package com.willer.controleacademico.pessoa.controller;
 
 import com.willer.controleacademico.pessoa.dto.Pessoa;
 import com.willer.controleacademico.pessoa.repositorio.IRepositorioPessoa;
-import com.willer.controleacademico.utilitarios.ControleAcademicoUtils;
+
+import java.util.ArrayList;
 
 public class PessoaController
 {
@@ -12,11 +13,34 @@ public class PessoaController
       return repositorioPessoa.inserir(p);
    }
 
-   public static void main(String[] args)
+   public static void alterarPessoa(Pessoa p, IRepositorioPessoa repositorioPessoa)
    {
-      System.out.println(ControleAcademicoUtils.isNomeValido("Willer123"));
-      System.out.println(ControleAcademicoUtils.limparEspacosEmBranco("     12312 sdadasdsa      asda sadasdsaadsdas"));
-      System.out.println(ControleAcademicoUtils.isCPF("11144477735"));
+      if (p != null)
+      {
+         repositorioPessoa.alterar(p);
+      }
+
    }
+
+   public static ArrayList<Pessoa> recuperarListaAluno(IRepositorioPessoa repositorioPessoa)
+   {
+      return repositorioPessoa.recuperaListaAlunos();
+   }
+
+   public static ArrayList<Pessoa> recuperarListaProfessor(IRepositorioPessoa repositorioPessoa)
+   {
+      return repositorioPessoa.recuperaListaProfessores();
+   }
+
+   public static Pessoa buscarPessoa(String cpf, IRepositorioPessoa repositorioPessoa)
+   {
+      return repositorioPessoa.buscarPorCpf(cpf);
+   }
+
+   public static void removerPessoa(String cpf, IRepositorioPessoa repositorioPessoa)
+   {
+      repositorioPessoa.excluir(cpf);
+   }
+
 
 }

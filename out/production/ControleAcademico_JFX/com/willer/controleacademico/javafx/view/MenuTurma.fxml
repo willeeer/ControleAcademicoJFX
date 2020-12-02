@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<GridPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.willer.controleacademico.javafx.controllers.turma.MenuTurmaController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints />
+    </rowConstraints>
+    <children>
+        <VBox alignment="CENTER" prefHeight="152.0" prefWidth="450.0" spacing="20.0" GridPane.rowIndex="2" GridPane.rowSpan="2">
+            <children>
+                <Button fx:id="cadastrarButton" maxWidth="226.0" mnemonicParsing="false" onAction="#cadastrar" prefHeight="37.0" prefWidth="226.0" text="Cadastrar">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <Button fx:id="exibirButton" maxWidth="226.0" mnemonicParsing="false" onAction="#exibir" prefHeight="37.0" prefWidth="226.0" text="Exibir - Alterar">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <Button fx:id="removerButton" maxWidth="226.0" mnemonicParsing="false" onAction="#remover" prefHeight="37.0" prefWidth="226.0" text="Remover">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+                <Button fx:id="listarButton" maxWidth="226.0" mnemonicParsing="false" onAction="#listar" prefHeight="37.0" prefWidth="226.0" text="Listar Turmas">
+                    <font>
+                        <Font size="16.0" />
+                    </font>
+                </Button>
+            <Button fx:id="listarAlunosButton" maxWidth="226.0" mnemonicParsing="false" onAction="#listarAlunos" prefHeight="37.0" prefWidth="226.0" text="Listar Alunos">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="listarProfessorButton" maxWidth="226.0" mnemonicParsing="false" onAction="#listarTurmasProfessor" prefHeight="37.0" prefWidth="226.0" text="Listar Turmas - Professor">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="listarTurmasDisciplinaButton" maxWidth="226.0" mnemonicParsing="false" onAction="#listarTurmasDisciplina" prefHeight="37.0" prefWidth="226.0" text="Listar Turmas - Disciplina">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="listarTurmasAlunoButton" maxWidth="226.0" mnemonicParsing="false" onAction="#listarTurmasAluno" prefHeight="37.0" prefWidth="226.0" text="Listar Turmas - Aluno">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            <Button fx:id="voltarButton" maxWidth="226.0" mnemonicParsing="false" onAction="#acaoBotaoVoltar" prefHeight="37.0" prefWidth="226.0" text="Voltar">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Button>
+            </children>
+        </VBox>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #d6d6d6;" GridPane.rowIndex="1" />
+        <FlowPane alignment="CENTER" prefHeight="92.0" prefWidth="450.0" style="-fx-background-color: #48A5EA;" GridPane.rowIndex="1">
+            <children>
+                <Label text="Menu Turma">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </FlowPane>
+    </children>
+</GridPane>

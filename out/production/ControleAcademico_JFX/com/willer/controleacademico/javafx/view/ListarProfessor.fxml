@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<AnchorPane prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.willer.controleacademico.javafx.controllers.professor.ListarProfessorController">
+   <children>
+      <ScrollPane prefHeight="400.0" prefWidth="700.0">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0">
+               <children>
+                  <TableView fx:id="tableData">
+                    <columns>
+                      <TableColumn fx:id="nome" prefWidth="134.0" text="Nome" />
+                      <TableColumn fx:id="cpf" minWidth="0.0" prefWidth="124.0" text="CPF" />
+                        <TableColumn fx:id="data" minWidth="0.0" prefWidth="133.0" text="Data de Nascimento" />
+                        <TableColumn fx:id="sexo" minWidth="0.0" prefWidth="45.0" text="Sexo" />
+                        <TableColumn fx:id="telefone" minWidth="0.0" prefWidth="97.0" text="Telefone" />
+                        <TableColumn fx:id="email" minWidth="0.0" prefWidth="138.0" text="E-mail" />
+                        <TableColumn fx:id="endereco" minWidth="0.0" prefWidth="138.0" text="Endereço" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
+        </content>
+      </ScrollPane>
+       <ButtonBar layoutX="159.0" layoutY="400.0" prefHeight="40.0" prefWidth="200.0" />
+       <Button fx:id="voltarButton" alignment="CENTER" contentDisplay="CENTER" layoutX="314.0" layoutY="408.0" mnemonicParsing="false" onAction="#acaoBotaoVoltar" prefHeight="25.0" prefWidth="126.0" text="Voltar" />
+   </children>
+</AnchorPane>
