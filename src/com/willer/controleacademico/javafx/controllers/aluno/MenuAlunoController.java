@@ -32,7 +32,7 @@ public class MenuAlunoController
    private Button voltarButton;
 
    @FXML
-   private void cadastrar(ActionEvent event) throws IOException
+   private void cadastrar()
    {
       DisplayManager.abrirCadastroAluno();
 
